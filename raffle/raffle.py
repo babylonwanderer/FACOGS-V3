@@ -92,8 +92,7 @@ class Raffle(BaseCog):
         role_info = f'{", ".join(str_roles) if roles else "@everyone"}'
         embed.add_field(name="Allowed Roles", value=role_info)
         msg = await channel.send(embed=embed)
-        embed.set_footer(text=(f'Started by: {ctx.author.name} | Winners: {winners} | '
-                               f'Ends at {fmt_end} UTC | Raffle ID: {msg.id}'))
+        embed.set_footer(text=(f'Winners: {winners} | f'Ends at {fmt_end} UTC | Raffle ID: {msg.id}'))
         await msg.edit(embed=embed)
         await msg.add_reaction('\U0001F389')
 
