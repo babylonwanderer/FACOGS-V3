@@ -72,12 +72,12 @@ class Raffle(BaseCog):
             return
 
         try:
-            description, winners = await self.raffle_setup(ctx)
+            description, winners, dos, roles = await self.raffle_setup(ctx)
         except asyncio.TimeoutError:
             return await ctx.send("Response timed out. A raffle failed to start.")
         str_roles = [r[0] for r in roles]
         description = (f'{description}\n\nReact to this '
-                       f'message with 	\U0001f389 to enter.\n\n')
+                       f'message with   \U0001f389 to enter.\n\n')
 
         channel = await self._get_channel(ctx)
         end = calendar.timegm(ctx.message.created_at.utctimetuple()) + timer
@@ -88,9 +88,9 @@ class Raffle(BaseCog):
         except:
             color = await self.bot.get_embed_color(ctx)
             embed = discord.Embed(description=description, title=title, color=color) ### new code
-        #embed.add_field(name="Days on Server", value=f'{dos}')
-        #role_info = f'{", ".join(str_roles) if roles else "@everyone"}'
-        #embed.add_field(name="Allowed Roles", value=role_info)
+        embed.add_field(name="Days on Server", value=f'{dos}')
+        role_info = f'{", ".join(str_roles) if roles else "@everyone"}'
+        embed.add_field(name="Allowed Roles", value=role_info)
         msg = await channel.send(embed=embed)
         embed.set_footer(text=(f'Started by: {ctx.author.name} | Winners: {winners} | '
                                f'Ends at {fmt_end} UTC | Raffle ID: {msg.id}'))
@@ -98,7 +98,8 @@ class Raffle(BaseCog):
         await msg.add_reaction('\U0001f389')
 
         async with self.db.guild(ctx.guild).Raffles() as r:
-            new_raffle = {"Channel": channel.id, "Timestamp": end, "ID": msg.id, "Title": title}
+            new_raffle = {"Channel": channel.id, "Timestamp": end, "DOS": dos, "Roles": roles,
+                          "ID": msg.id, "Title": title}
             r[msg.id] = new_raffle
 
         await self.raffle_timer(ctx.guild, new_raffle, timer)
@@ -242,7 +243,7 @@ class Raffle(BaseCog):
         question = await ctx.send(question)
         resp = await ctx.bot.wait_for(
             'message',
-            timeout=120,
+            timeout=60,
             check=lambda m: (
                 m.author == ctx.author
                 and m.channel == ctx.channel
@@ -266,7 +267,7 @@ class Raffle(BaseCog):
             else:
                 return False
 
-        resp = await ctx.bot.wait_for('message', timeout=120, check=predicate)
+        resp = await ctx.bot.wait_for('message', timeout=60, check=predicate)
         roles = []
         for name in resp.content.split(', '):
             for role in ctx.guild.roles:
@@ -310,15 +311,17 @@ class Raffle(BaseCog):
 
         description = await self._get_response(ctx, q1, predicate1)
         winners = await self._get_response(ctx, q2, predicate2)
-        
-        #if await self._get_response(ctx, q3, predicate3) == 'yes':
-        #    dos = await self._get_response(ctx, "How many days on the server are required?",
-        #                                   predicate4)
+        dos = 0
+        roles = []
 
-        #if await self._get_response(ctx, q4, predicate3) == 'yes':
-        #    roles = await self._get_roles(ctx)
+        if await self._get_response(ctx, q3, predicate3) == 'yes':
+            dos = await self._get_response(ctx, "How many days on the server are required?",
+                                           predicate4)
 
-        return description, int(winners), 
+        if await self._get_response(ctx, q4, predicate3) == 'yes':
+            roles = await self._get_roles(ctx)
+
+        return description, int(winners), int(dos), roles
 
     async def raffle_worker(self):
         """Restarts raffle timers
@@ -409,8 +412,8 @@ class Raffle(BaseCog):
                                'for the raffle could not be picked.')
         else:
             display = ', '.join(winner.mention for winner in winners)
-            await channel.send(f"Congratulations {display}! You have won  "
-                               f"{msg.embeds[0].title} !!!")
+            await channel.send(f"Congratulations {display}! You have won the "
+                               f"{msg.embeds[0].title} raffle!")
 
     async def validate_entries(self, users, msg):
         dos, roles = msg.embeds[0].fields
