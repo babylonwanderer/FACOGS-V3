@@ -88,11 +88,11 @@ class Raffle(BaseCog):
         except:
             color = await self.bot.get_embed_color(ctx)
             embed = discord.Embed(description=description, title=title, color=color) ### new code
-        embed.add_field(name="Days on Server", value=f'{dos}')
+        embed.add_field(name="No of Winners", value='{winners}')
         role_info = f'{", ".join(str_roles) if roles else "@everyone"}'
         embed.add_field(name="Allowed Roles", value=role_info)
         msg = await channel.send(embed=embed)
-        embed.set_footer(text=(f'Winners: {winners} | Ends at {fmt_end} UTC | Raffle ID: {msg.id}'))
+        embed.set_footer(text=(f'Ends at {fmt_end} UTC | Raffle ID: {msg.id}'))
         await msg.edit(embed=embed)
         await msg.add_reaction('\U0001F389')
 
