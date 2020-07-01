@@ -56,14 +56,11 @@ class Raffle(BaseCog):
     @raffle.command()
     async def start(self, ctx, timer, *, title: str):
         """Starts a raffle.
-
         Timer accepts a integer input that represents seconds or it will
         take the format of HH:MM:SS. For example:
-
         80       - 1 minute and 20 seconds or 80 seconds
         30:10    - 30 minutes and 10 seconds
         24:00:00 - 1 day or 24 hours
-
         Title should not be longer than 35 characters.
         Only one raffle can be active per server.
         """
@@ -77,7 +74,7 @@ class Raffle(BaseCog):
             return await ctx.send("Response timed out. A raffle failed to start.")
         str_roles = [r[0] for r in roles]
         description = (f'{description}\n\nReact to this '
-                       f'message with \U0001F389 to enter.\n\n\n\n')
+                       f'message with \U0001F389 to enter.\n\n')
 
         channel = await self._get_channel(ctx)
         end = calendar.timegm(ctx.message.created_at.utctimetuple()) + timer
@@ -92,7 +89,8 @@ class Raffle(BaseCog):
         role_info = f'{", ".join(str_roles) if roles else "@everyone"}'
         embed.add_field(name="Open to:", value=role_info)
         msg = await channel.send(embed=embed)
-        embed.set_footer(text=(Ends at f'{fmt_end} UTC' | Raffle ID: {msg.id}'))
+        embed.set_footer(text=(f'Started by: {ctx.author.name} | Winners: {winners} | '
+                               f'Ends at {fmt_end} UTC | Raffle ID: {msg.id}'))
         await msg.edit(embed=embed)
         await msg.add_reaction('\U0001F389')
 
@@ -348,11 +346,9 @@ class Raffle(BaseCog):
 
     async def raffle_timer(self, guild, raffle: dict, remaining: int):
         """Helper function for starting the raffle countdown.
-
         This function will silently pass when the unique raffle id is not found or
         if a raffle is empty. It will call `raffle_teardown` if the ID is still
         current when the sleep call has completed.
-
         Parameters
         ----------
         guild : Guild
