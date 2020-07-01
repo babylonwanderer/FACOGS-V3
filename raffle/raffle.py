@@ -77,7 +77,7 @@ class Raffle(BaseCog):
             return await ctx.send("Response timed out. A raffle failed to start.")
         str_roles = [r[0] for r in roles]
         description = (f'{description}\n\nReact to this '
-                       f'message with \U0001F39F to enter.\n\n')
+                       f'message with \U0001F389 to enter.\n\n')
 
         channel = await self._get_channel(ctx)
         end = calendar.timegm(ctx.message.created_at.utctimetuple()) + timer
@@ -95,7 +95,7 @@ class Raffle(BaseCog):
         embed.set_footer(text=(f'Started by: {ctx.author.name} | Winners: {winners} | '
                                f'Ends at {fmt_end} UTC | Raffle ID: {msg.id}'))
         await msg.edit(embed=embed)
-        await msg.add_reaction('\U0001F39F')
+        await msg.add_reaction('\U0001F389')
 
         async with self.db.guild(ctx.guild).Raffles() as r:
             new_raffle = {"Channel": channel.id, "Timestamp": end, "DOS": dos, "Roles": roles,
@@ -394,7 +394,7 @@ class Raffle(BaseCog):
                 pass
 
     async def pick_winner(self, guild, channel, msg):
-        reaction = next(filter(lambda x: x.emoji == '\U0001F39F', msg.reactions), None)
+        reaction = next(filter(lambda x: x.emoji == '\U0001F389', msg.reactions), None)
         if reaction is None:
             return await channel.send('It appears there were no valid entries, so a '
                                       'winner for the raffle could not be picked.')
@@ -412,8 +412,8 @@ class Raffle(BaseCog):
                                'for the raffle could not be picked.')
         else:
             display = ', '.join(winner.mention for winner in winners)
-            await channel.send(f"Congratulations {display}! You have won the "
-                               f"{msg.embeds[0].title} raffle!")
+            await channel.send(f"Congratulations {display}! You have won "
+                               f"{msg.embeds[0].title} !!!")
 
     async def validate_entries(self, users, msg):
         dos, roles = msg.embeds[0].fields
