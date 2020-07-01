@@ -88,6 +88,7 @@ class Raffle(BaseCog):
         except:
             color = await self.bot.get_embed_color(ctx)
             embed = discord.Embed(description=description, title=title, color=color) ### new code
+        embed.add_thumbnail(url: "http://www.forbiddenangels.net/images/c3.png")
         embed.add_field(name="Winners", value=f'{winners}')
         role_info = f'{", ".join(str_roles) if roles else "@everyone"}'
         embed.add_field(name="Open to:", value=role_info)
