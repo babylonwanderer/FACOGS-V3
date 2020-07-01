@@ -94,8 +94,7 @@ class Raffle(BaseCog):
         embed.add_field(name="Ends:", value=f'{fmt_end} UTC')
         embed.add_field(name="Raffle ID:", value=f'{msg.id}')
         msg = await channel.send(embed=embed)
-        embed.set_footer(text=(f'Winners: {winners} | '
-                               f'Ends at {fmt_end} UTC | Raffle ID: {msg.id}'))
+        embed.set_footer(text=(f'Winners: {winners} | 'f'Ends at {fmt_end} UTC | Raffle ID: {msg.id}'))
         await msg.edit(embed=embed)
         await msg.add_reaction('\U0001F389')
 
