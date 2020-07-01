@@ -77,7 +77,7 @@ class Raffle(BaseCog):
             return await ctx.send("Response timed out. A raffle failed to start.")
         str_roles = [r[0] for r in roles]
         description = (f'{description}\n\nReact to this '
-                       f'message with \U0001F389 to enter.\n\n')
+                       f'message with \U0001F389 to enter.\n\n\n\n')
 
         channel = await self._get_channel(ctx)
         end = calendar.timegm(ctx.message.created_at.utctimetuple()) + timer
