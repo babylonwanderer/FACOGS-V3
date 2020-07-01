@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/Babylonwanderer/FACOGS-V3/"><img src="http://www.forbiddenangels.net/images/logo.png" alt="FA-v3" width="200"></a>
+  <a href="https://github.com/Babylonwanderer/FACOGS-V3/"><img src="http://www.forbiddenangels.net/images/fleetlogo.png" alt="FA-v3" width="200"></a>
   <br>
   FACOGS-V3
   <br>
@@ -52,7 +52,7 @@ Make sure that you use the `[p]cog update` command to periodically update my plu
 
 | ![Casino](https://i.imgur.com/vkpfJug.png)                                              |
 | ![Shop](https://cdn3.iconfinder.com/data/icons/shopping-icons-14/128/17_Store-128.png)  |
-| ![Raffle](https://github.com/Redjumpman/Jumper-Plugins/wiki/Raffle-RedV3)               |
+| ![Raffle](https://i.imgur.com/nFEY62O.png)                                              |
 
 # Support
 
