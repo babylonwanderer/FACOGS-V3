@@ -1,7 +1,7 @@
 {
     "author" : ["BabylonWanderer"],
     "install_msg" : "Thank you for installing raffle. Be sure to check out the wiki here: https://github.com/Babylonwanderer/FA-v3",
-    "name" : "FleetRaffle",
+    "name" : "fleetraffle",
     "short" : "Reaction based raffles",
     "description" : "Create reaction based raffles with timers that persist through restarts and shutdowns.",
     "permissions" : ["Manage Messages", "Embed Links", "Add Reactions"],

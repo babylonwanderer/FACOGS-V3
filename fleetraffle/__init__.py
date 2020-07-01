@@ -1,5 +1,5 @@
-from .raffle import FleetRaffle
+from .raffle import fleetraffle
 
 
 def setup(bot):
-    bot.add_cog(FleetRaffle(bot))
+    bot.add_cog(fleetraffle(bot))
