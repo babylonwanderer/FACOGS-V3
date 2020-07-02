@@ -162,7 +162,7 @@ class Raffle(BaseCog):
             if m.channel == ctx.channel and m.author == ctx.author:
                 return int(m.content) in range(1, 11)
 
-        resp = await ctx.bot.wait_for('message', timeout=60, check=predicate)
+        resp = await ctx.bot.wait_for('message', timeout=180, check=predicate)
         message_id = raffles[int(resp.content) - 1][0]
         await resp.delete()
         await msg.delete()
