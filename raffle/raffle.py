@@ -69,7 +69,7 @@ class Raffle(BaseCog):
             return
 
         try:
-            description, winners, dos, roles = await self.raffle_setup(ctx)
+            description, winners, roles = await self.raffle_setup(ctx)
         except asyncio.TimeoutError:
             return await ctx.send("Response timed out. A raffle failed to start.")
         str_roles = [r[0] for r in roles]
@@ -94,7 +94,7 @@ class Raffle(BaseCog):
         await msg.add_reaction('\U0001F389')
 
         async with self.db.guild(ctx.guild).Raffles() as r:
-            new_raffle = {"Channel": channel.id, "Timestamp": end, "DOS": dos, "Roles": roles,
+            new_raffle = {"Channel": channel.id, "Timestamp": end, "Roles": roles,
                           "ID": msg.id, "Title": title}
             r[msg.id] = new_raffle
 
