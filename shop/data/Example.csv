@@ -1,0 +1,15 @@
+Shop,Item,Type,Cost,Qty,Info,Role,Messages
+F.A. Emporium,glass of wine :wine_glass:,Drink,25,"10,000",Chateau Pcard,,
+F.A. Emporium,beer :beer:,Drink,25,"10,000",House Tap,,
+F.A. Emporium,coffee :coffee:,Drink,25,"10,000",Description really?,,
+F.A. Emporium,"corona <:corona:686691045769216029> ",Drink,25,"10,000",A Chilled bottle of beer.,,
+F.A. Emporium,"irnbru <:IB:387278597074845717> ",Drink,25,"10,000",Scottish Fizzy Drink,,
+F.A. Emporium,tea :tea:,Drink,25,"10,000",Relaxing Green Tea,,
+F.A. Emporium,"vodka <:vodka:388708963002089473> ",Drink,25,"10,000",Russsia's Finest,,
+F.A. Emporium,"coke <:Cola:387278532717314049> ",Drink,25,"10,000",Coca-Cola fizzy Drink,,
+F.A. Emporium,"cokezero <:CokeZero:387278528757891133> ",Drink,25,"10,000",Suger free Coke,,
+F.A. Emporium,"whiskey <:whiskey:388709894653607936> ",Drink,25,"10,000",Scottish Whiskey,,
+F.A. Emporium,ale <:ale:712307198138515496>,Drink,25,"10,000",House tap,"",""
+F.A. Emporium,cider <:cider:387310335486328833>,Drink,25,"10,000",House Brew,"",""
+F.A. Emporium,"margarita <:margarita:559437776064610305> ",Drink,25,"10,000",House Mix,"",""
+F.A. Emporium,champagne :champagne:,Drink,250,1000,Party Juice,"",""
