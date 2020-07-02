@@ -78,7 +78,7 @@ class Raffle(BaseCog):
 
         channel = await self._get_channel(ctx)
         end = calendar.timegm(ctx.message.created_at.utctimetuple()) + timer
-        fmt_end = time.strftime("%a %d %b %Y %H:%M:%S", time.gmtime(end))
+        fmt_end = time.strftime("%a %d %b %Y %H:%M:%S", time.localtime(end))
 
         try:
             embed = discord.Embed(description=description, title=title, color=self.bot.color) ### old compat, i think ?
