@@ -69,7 +69,7 @@ class Raffle(BaseCog):
             return
 
         try:
-            description, winners, roles = await self.raffle_setup(ctx)
+            description, winners, dos, roles = await self.raffle_setup(ctx)
         except asyncio.TimeoutError:
             return await ctx.send("Response timed out. A raffle failed to start.")
         str_roles = [r[0] for r in roles]
