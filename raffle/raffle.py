@@ -88,7 +88,6 @@ class Raffle(BaseCog):
         embed.add_field(name="Winners", value=f'{winners}')
         role_info = f'{", ".join(str_roles) if roles else "@everyone"}'
         embed.add_field(name="Open to:", value=role_info)
-        embed.add_field(name="Raffle ID:", value=f'{msg.id})
         msg = await channel.send(embed=embed)
         embed.set_footer(text=(f'Started by: {ctx.author.name} | Winners: {winners} | '
                                f'Ends at {fmt_end} your time. | Raffle ID: {msg.id}'))
