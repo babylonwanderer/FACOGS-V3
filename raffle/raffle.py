@@ -85,7 +85,7 @@ class Raffle(BaseCog):
         except:
             color = await self.bot.get_embed_color(ctx)
             embed = discord.Embed(description=description, title=title, color=color) ### new code
-        ##embed.add_field(name="Days on Server", value=f'{dos}')
+        embed.add_field(name="Days on Server", value=f'{dos}')
         role_info = f'{", ".join(str_roles) if roles else "@everyone"}'
         embed.add_field(name="Open to:", value=role_info)
         msg = await channel.send(embed=embed)
@@ -94,7 +94,7 @@ class Raffle(BaseCog):
         await msg.add_reaction('\U0001F389')
 
         async with self.db.guild(ctx.guild).Raffles() as r:
-            new_raffle = {"Channel": channel.id, "Timestamp": end, "Roles": roles,
+            new_raffle = {"Channel": channel.id, "Timestamp": end, "DOS": dos, "Roles": roles,
                           "ID": msg.id, "Title": title}
             r[msg.id] = new_raffle
 
