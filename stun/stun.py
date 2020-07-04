@@ -4,7 +4,7 @@ class stun(commands.Cog):
     """Stuns the user mentioned """
     
     @commands.command()
-    async def mycom(self, ctx):
+    async def stun(self, ctx):
         """This does stuff!"""
         # Your code will go here
         await ctx.send("I can do stuff!")
