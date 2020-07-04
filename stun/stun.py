@@ -3,9 +3,6 @@ from redbot.core import commands
 class Stun:
     """Stuns the user mentioned """
 
-    def __init__(self, bot):
-        self.bot = bot
-
     @commands.command()
     async def stun(self, user : discord.Member):
         """Stuns the mentioned user.. """
