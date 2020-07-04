@@ -1,6 +1,6 @@
 from redbot.core import commands
 
-class Stun(commands.Cog):
+class stun(commands.Cog):
     """Stuns the user mentioned """
     
     @commands.command()
