@@ -1,4 +1,4 @@
-from .stun import Stun
+from .mycog import Mycog
 
 def setup(bot):
-    bot.add_cog(Stun())
+    bot.add_cog(Mycog())
