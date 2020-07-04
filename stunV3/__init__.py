@@ -1,4 +1,4 @@
-from .stunV3 import StunV3
+from .mycog import Mycog
 
 def setup(bot):
-    bot.add_cog(StunV3())
+    bot.add_cog(Mycog())
