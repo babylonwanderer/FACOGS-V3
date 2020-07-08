@@ -305,4 +305,4 @@ class Rules:
         """Random Rule of Aquisition"""
         
         rule = choice(rules)
-        await ctx.send(":orange_book:Rules of Acquisition # rule)
+        await ctx.send(":orange_book:Rules of Acquisition # "rule)
