@@ -324,5 +324,5 @@ class Rules:
                 return
             await ctx.send(":orange_book:Rules of Acquisition # {}: {}".format(num, rules[num]))
             return
-        rule = randchoice(list(rules.keys()))
+        rule = choice(list(rules.keys()))
         await ctx.send(":orange_book:Rules of Acquisition # {}: {}".format(rule, rules[rule]))
