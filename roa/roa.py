@@ -304,4 +304,4 @@ class Rules:
     async def roa(self, ctx):
         """Random Rule of Aquisition"""
         
-       await ctx.send(":orange_book:Rules of Acquisition # choice(rules)")
+       await ctx.send(:orange_book:Rules of Acquisition # choice(rules))
