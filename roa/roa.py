@@ -296,12 +296,12 @@ rules: List[str] = [
     _(286:  "When Morn leaves it is all over.")
 ]
 
-class Rules:
+class Rules:(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
     @commands.command()
-    async def roa(self, ctx):
+    async def roa(self, ctx, commands.Context):
         """Random Rule of Aquisition"""
         
        await ctx.send(":orange_book:Rules of Acquisition #" {choice(rules)})
