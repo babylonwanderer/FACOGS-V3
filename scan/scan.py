@@ -1,6 +1,6 @@
 from redbot.core import commands
 
-class Trek(commands.Cog):
+class Scan(commands.Cog):
     """Trek Stuff"""
 
     @commands.command()
