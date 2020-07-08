@@ -292,7 +292,7 @@ class Insult(commands.Cog):
         msg = " "
         if user:
 
-            if user.id == <@!275648831117328384>:
+            if user.id == <@!275648831117328384>
                 user = ctx.message.author
                 bot_msg = [
                     _(
