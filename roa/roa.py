@@ -304,4 +304,4 @@ class Rules:(commands.Cog):
     async def roa(self, ctx, commands.Context):
         """Random Rule of Aquisition"""
         
-       await ctx.send(":orange_book:Rules of Acquisition #" {choice(rules)})
+       await ctx.send(":orange_book:Rules of Acquisition #" + {choice(rules)})
