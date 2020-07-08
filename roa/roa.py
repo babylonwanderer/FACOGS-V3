@@ -5,7 +5,7 @@ from redbot.core.i18n import Translator, cog_i18n
 from typing import List
 
 
-_ = Translator("Insult", __file__)
+_ = Translator("roa", __file__)
 
 rules: List[str] = [
     _(1:  "Once you have their money, never give it back.."),
