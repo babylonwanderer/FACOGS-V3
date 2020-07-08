@@ -1,4 +1,4 @@
-from .scan import Scan
+from .scan import scan
 
 def setup(bot):
-    bot.add_cog(Scan())
+    bot.add_cog(scan())
