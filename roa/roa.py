@@ -1,11 +1,7 @@
 import discord
 from redbot.core import commands
 from random import choice
-from redbot.core.i18n import Translator, cog_i18n
 from typing import List
-
-
-_ = Translator("roa", __file__)
 
 rules: List[str] = [
     _(1:  "Once you have their money, never give it back.."),
@@ -300,29 +296,13 @@ rules: List[str] = [
     _(286:  "When Morn leaves it is all over.")
 ]
 
-
 class Rules:
     def __init__(self, bot):
         self.bot = bot
 
-    def format_help_for_context(self, ctx: commands.Context) -> str:
-        """
-            Thanks Babylonwanderer
-        """
-        pre_processed = super().format_help_for_context(ctx)
-        return f"{pre_processed}\n\nCog Version: {self.__version__}"
-
     @commands.command()
-    async def roa(self, ctx, num: int=None):
+    async def roa(self, ctx):
         """Random Rule of Aquisition"""
-        if num:
-            if num < 1:
-                await ctx.send('Just how dumb are you exactly?')
-                return
-            if num > 286:
-                await ctx.send('There are only 286 Rules of Acquisition.')
-                return
-            await ctx.send(":orange_book:Rules of Acquisition # {}: {}".format(num, rules[num]))
-            return
-        rule = choice(list(rules.keys()))
-        await ctx.send(":orange_book:Rules of Acquisition # {}: {}".format(rule, rules[rule]))
+        
+        rule = choice(rules)
+        await ctx.send(":orange_book:Rules of Acquisition # rule)
