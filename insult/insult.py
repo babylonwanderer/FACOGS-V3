@@ -292,17 +292,6 @@ class Insult(commands.Cog):
         msg = " "
         if user:
 
-            if user.id == <@!275648831117328384>
-                user = ctx.message.author
-                bot_msg = [
-                    _(
-                        " NO! I will not insult my CREATOR.  Pick somecunt else..."
-                    ),                    
-                ]
-                await ctx.send(f"{ctx.author.mention}{choice(bot_msg)}")
-
-            else:
-            
             if user.id == self.bot.user.id:
                 user = ctx.message.author
                 bot_msg = [
